@@ -12,7 +12,7 @@ func compareTriplets(a []int32, b []int32) (int, int) {
   Alice := 0
   Bob := 0
   
-  for i := range(len(a)) {
+  for i, _ := range(a) {
     if a[i] > b[i] {
       Alice += 1
     } else if a[i] < b[i] {
