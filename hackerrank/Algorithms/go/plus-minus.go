@@ -9,7 +9,7 @@ import (
 )
 
 func plusMinus(arr []int32) {
-  var pos, neg, zero int
+  var pos, neg, zero float64
   for _, value := range(arr) {
     if value > 0 {
       pos += 1
@@ -19,10 +19,10 @@ func plusMinus(arr []int32) {
       zero += 1
     }
   }
-  fmt.Println(float64(pos)/float64(len(arr)))
-  fmt.Printf("%d\n", pos/len(arr))
-  fmt.Printf("%d\n", neg/len(arr))
-  fmt.Printf("%d\n", zero/len(arr))
+  size := float64(len(arr))
+  fmt.Printf("%.6f\n", pos/size)
+  fmt.Printf("%.6f\n", neg/size)
+  fmt.Printf("%.6f\n", zero/size)
 }
 
 func main() {
