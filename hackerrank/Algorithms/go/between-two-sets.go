@@ -9,20 +9,33 @@ import (
   "strings"
 )
 
-func getTotalX(a []int32, b []int32) int32 {
+func getTotalX(a []int32, b []int32) int {
   var min_value, max_value int32 = 1, 1
   for i, _ := range(a) { if a[i] < min_value { min_value = a[i] } }
   for i, _ := range(b) { if b[i] > max_value { max_value = b[i] } }
 
-  count := 0
-  var arr, brr []int32
+  var arr []int32
   for i := min_value; i < max_value+1; i++ {
-    for _, value := range(a) { arr = append(arr, i%value) }
-    for _, value := range(b) { brr = append(arr, value%i) }
-    if 
+    valid := true
+    for _, value := range a {
+      if i%value != 0 {
+        valid = false
+        break
+      }
+    }
+    if valid {
+      for _, value := range b {
+        if value%i != 0 {
+          valid = false
+          break
+        }
+      }
+    }
+    if valid {
+      arr = append(arr, i)
+    }
   }
-  fmt.Println(arr, brr)
-  return min_value
+  return len(arr)
 }
 
 func main() {
