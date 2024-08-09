@@ -4,14 +4,13 @@ import os
 import sys
 
 def getMoneySpent(keyboards, drives, b):
-  prices = []
 
   if len(keyboards) > len(drives): 
-    for i in keyboards: prices.extend([x+i for x in drives])
+    for i in keyboards: prices = [x+i for x in drives]
   else:
-    for i in drives: prices.extend([x+i for x in keyboards])
+    for i in drives: prices = [x+i for x in keyboards]
   
-  spent = [ _ for _ in prices if _ <= b]
+  spent = [ price for price in prices if price <= b]
   
   if len(spent) == 0: return -1
   else: return max(spent)
